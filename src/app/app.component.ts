@@ -52,6 +52,10 @@ import {RouterActive} from './router-active';
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
           </li>
+          |
+          <li router-active>
+            <a [routerLink]=" ['Post'] ">Post</a>
+          </li>          
         </ul>
       </nav>
     </md-toolbar>
@@ -75,6 +79,7 @@ import {RouterActive} from './router-active';
   { path: '/home',  name: 'Home',  component: Home },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
+  { path: '/post', name: 'Post', loader: () => require('es6-promise!./post')('PostComponent') }
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';

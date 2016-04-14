@@ -1,0 +1,24 @@
+<md-card>
+    <md-card-title>
+        Posts
+        <button 
+            style="display: inline-block"
+            md-raised-button color="primary"
+            (click)="onCreate()">
+            Erstellen
+        </button>
+    </md-card-title>
+    <md-list *ngIf="isActive">
+        <md-list-item 
+            class="md-3-line"
+            *ngFor="#post of posts">
+            <h4 (click)="onSelect(post)" md-line>
+                {{post.title}}</h4>
+            <button 
+                md-mini-fab color="accent"
+                (click)="onDelete(post)">
+                <i class="material-icons md-24">delete</i>
+            </button>
+        </md-list-item>
+    </md-list>
+</md-card>

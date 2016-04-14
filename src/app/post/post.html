@@ -1,0 +1,21 @@
+<md-card>
+
+    <h1>Posts</h1>
+
+
+    <post-list 
+        [posts]="posts"
+        (createPost)="createPost()"
+        (selectPost)="selectPost($event)"
+        (deletePost)="deletePost($event)"
+        >
+    </post-list>
+    <br/>
+    <post-edit 
+        [post]="selectedPost" 
+        [mode]="mode" 
+        (createPost)="createPost()"
+        (savePost)="savePost($event)">
+    </post-edit>
+
+</md-card>

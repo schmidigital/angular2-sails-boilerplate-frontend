@@ -1,0 +1,77 @@
+<md-card>
+        <md-card-title>
+            
+            <span *ngIf='mode == "edit"'>Post bearbeiten</span>
+            <span *ngIf='mode == "new"'>Neuen Post erstellen</span>
+             
+            <button 
+            *ngIf='mode == "edit"'
+            style="display: inline-block"
+            md-raised-button color="primary"
+            (click)="onCreate()">
+            <!--<i class="material-icons md-24">add</i>-->
+            Neuer Post
+            </button>
+        </md-card-title>
+        
+        <md-card-content> 
+            <form #f="ngForm" (ngSubmit)="onSubmit(f.form)"> 
+                <div class="form-group">
+                    <md-input 
+                        ngControl="title" 
+                        [dividerColor]='title.touched && title.errors ? "accent" : "primary"'
+                        [(ngModel)]="post.title"
+                        #title="ngForm" 
+                        id="title"
+                        placeholder="Titel" 
+                        type="text"
+                        class="form-control"
+                        required
+                        minlength="6"
+                        [hintLabel]='(title.touched && title.errors ? 
+                                    ((title.errors?.required ? "Titel fehlt!" : "") || 
+                                    (title.errors?.minlength ? "Mindestens 6 Zeichen eingeben." : "" )) 
+                                    : "")'
+                    ></md-input>
+                </div> 
+                <div class="form-group">
+                    
+                    <!--<p-editor 
+                        ngControl="content" 
+                        #content="ngForm">
+                    </p-editor>-->
+                    
+                    <md-input
+                        [(ngModel)]="post.content"
+                        ngControl="content" 
+                        #content="ngForm"
+                        placeholder="Content" 
+                        >
+                    </md-input>
+                    
+                    <div
+                        class="alert alert-danger"
+                        *ngIf="content.touched && !content.valid">
+                        Content is missing dude!
+                    </div>
+                </div>
+
+                <button 
+                    md-raised-button
+                    md-ink-ripple
+                    color="primary"
+                    type="submit"
+                    [disabled]="!f.valid"
+                >
+                Speichern
+                </button>
+                <button 
+                    md-raised-button
+                    md-ink-ripple
+                    color="secondary"
+                >
+                Verwerfen
+                </button>
+            </form>
+        </md-card-content>
+</md-card>
