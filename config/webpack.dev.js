@@ -40,6 +40,15 @@ module.exports = webpackMerge(commonConfig, {
   // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
   devtool: 'cheap-module-eval-source-map',
 
+  module: {
+    loaders: [
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
+      }
+    ]
+  },
+
   // Options affecting the output of the compilation.
   //
   // See: http://webpack.github.io/docs/configuration.html#output
